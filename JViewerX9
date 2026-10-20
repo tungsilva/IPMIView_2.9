@@ -1,0 +1,9 @@
+#!/bin/sh
+# IPMIView 2.9 Linux launcher
+DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$DIR"
+JAVA="$DIR/jre/bin/java"
+[ -x "$JAVA" ] || JAVA=java
+exec "$JAVA" -Djava.library.path="$DIR" \
+  -cp "iKVM.jar:IPMIView20.jar:TrapView.jar:JViewerX9.jar:lax.jar" \
+  supermicro.jviewer.JViewerX9 "$@"
